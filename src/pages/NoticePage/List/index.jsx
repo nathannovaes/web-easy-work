@@ -7,14 +7,11 @@ import {
 } from 'react-bootstrap';
 import Navbar from '../../../common/Navbar';
 import ListTable from './ListTable';
-import { useNavigate } from "react-router-dom";
 
 import { getNotices } from "../../../services/NoticeService";
 
 
 function List() {
-    let navigate = useNavigate();
-
     const [notices, setNotices] = useState([]);
     const [loading, setLoading] = useState(true);
 

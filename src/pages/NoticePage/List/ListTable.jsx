@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { deleteNotice } from "../../../services/NoticeService";
 
 import {
     Table, 
@@ -29,28 +29,20 @@ function ListTable(props) {
         }
     }
 
-    let navigate = useNavigate();
-    const editNotice = async (noticeId) => {
-
-        if(localStorage.getItem("notice_id") != noticeId) {
-            const response = await getNotice(noticeId)
-            localStorage.setItem("notice", JSON.stringify(response.data.response));
-            localStorage.setItem("notice_id", noticeId);
-        }
-
-        // navigate("/notice/edit");
-    }
 
     return (
         <>
-            <Form className="d-flex">
-                <FormControl
-                type="search"
-                placeholder="Pesquisar"
-                className="me-2"
-                onChange={handleSearch}
-                />
-            </Form>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form>
+                        <FormControl
+                        type="search"
+                        placeholder="Pesquisar"
+                        className="mb-3"
+                        onChange={handleSearch}
+                        />
+                    </Form>
+            </Form.Group>
+
             <Table striped bordered hover>
             <thead>
                 <tr>
@@ -73,9 +65,6 @@ function ListTable(props) {
                         <td>{ notice.description }</td>
                         <td>
                             <div className="float-right">
-                                <a onClick={() => editNotice(notice.id)} className="action-icon"> 
-                                    <i className="mdi mdi-square-edit-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Editar"></i>
-                                </a>
                                 <a onClick={() => deleteNotice(notice.id)} className="action-icon"> 
                                     <i className="mdi mdi-delete" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Deletar"></i>
                                 </a>

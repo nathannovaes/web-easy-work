@@ -30,14 +30,14 @@ function Navbar() {
                 <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
                 <NavbarBootstrap.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
-                        <Button onClick={newNotice}>
+                        <Nav.Link onClick={newNotice}>
                             <i className="mdi mdi-plus"></i> 
                             Notícia
-                        </Button>
-                        <Button onClick={newCategory}>
+                        </Nav.Link>
+                        <Nav.Link onClick={newCategory}>
                             <i className="mdi mdi-plus"></i> 
                             Categoria
-                        </Button>
+                        </Nav.Link>
                     </Nav>
                 </NavbarBootstrap.Collapse>
             </Container>
