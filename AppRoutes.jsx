@@ -8,6 +8,7 @@ import {
 
 import NoticePage from "./src/pages/NoticePage/List";
 import NoticePageNew from "./src/pages/NoticePage/New";
+import NoticePageEdit from "./src/pages/NoticePage/Edit";
 import CategoryPageNew from "./src/pages/CategoryPage/New";
 
 
@@ -24,6 +25,10 @@ const AppRoutes = () => {
                 <Route exact path="/notice/new" 
                 element={
                     <NoticePageNew />
+                }/>
+                <Route exact path="/notice/edit" 
+                element={
+                    <NoticePageEdit />
                 }/>
                 <Route exact path="/category/new" 
                 element={

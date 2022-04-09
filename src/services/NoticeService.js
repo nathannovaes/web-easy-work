@@ -31,3 +31,14 @@ export const deleteNotice = async (noticeId) => {
 export const getNotice = async (noticeId) => {
     return axios.get(`${baseUrl}/api/notice/${noticeId}`);
 };
+
+export const updateNotice = async (noticeId, name, description, category_id) => {
+    return axios.put(`${baseUrl}/api/notice/${noticeId}`, {name, description, category_id})
+    .then(response =>{
+        toast.success('Notícia atualizada com sucesso!');
+        setTimeout(() => {location.reload(true)}, 1000);
+    })
+    .catch(error => {
+        toast.error('Não foi atualizar a notícia.');
+    });
+};

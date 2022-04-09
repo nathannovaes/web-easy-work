@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { deleteNotice } from "../../../services/NoticeService";
+import { deleteNotice, getNotice } from "../../../services/NoticeService";
+import { useNavigate } from "react-router-dom";
 
 import {
     Table, 
@@ -29,6 +30,16 @@ function ListTable(props) {
         }
     }
 
+
+    let navigate = useNavigate();
+    const editNotice = async (noticeId) => {
+
+        const response = await getNotice(noticeId)
+        localStorage.setItem("notice", JSON.stringify(response.data.response));
+        localStorage.setItem("notice_id", noticeId);
+
+        navigate("/notice/edit");
+    }
 
     return (
         <>
@@ -64,9 +75,12 @@ function ListTable(props) {
                         <td>{ notice.category }</td>
                         <td>{ notice.description }</td>
                         <td>
-                            <div className="float-right">
+                            <div className="d-flex justify-content-center">
                                 <a onClick={() => deleteNotice(notice.id)} className="action-icon"> 
                                     <i className="mdi mdi-delete" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Deletar"></i>
+                                </a>
+                                <a onClick={() => editNotice(notice.id)} className="action-icon"> 
+                                    <i className="mdi mdi-square-edit-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Editar"></i>
                                 </a>
                             </div>
                         </td>
