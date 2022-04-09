@@ -9,8 +9,9 @@ import {
 import NoticePage from "./src/pages/NoticePage/List";
 import NoticePageNew from "./src/pages/NoticePage/New";
 import NoticePageEdit from "./src/pages/NoticePage/Edit";
+import CategoryPage from "./src/pages/CategoryPage/List";
 import CategoryPageNew from "./src/pages/CategoryPage/New";
-
+import CategoryPageEdit from "./src/pages/CategoryPage/Edit";
 
 
 const AppRoutes = () => {
@@ -33,6 +34,14 @@ const AppRoutes = () => {
                 <Route exact path="/category/new" 
                 element={
                     <CategoryPageNew />
+                }/>
+                <Route exact path="/categories" 
+                element={
+                    <CategoryPage />
+                }/>
+                <Route exact path="/category/edit" 
+                element={
+                    <CategoryPageEdit />
                 }/>
             </Routes>
         </Router>

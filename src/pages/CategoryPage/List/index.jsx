@@ -8,17 +8,17 @@ import {
 import Navbar from '../../../common/Navbar';
 import ListTable from './ListTable';
 
-import { getNotices } from "../../../services/NoticeService";
+import { getCategories } from "../../../services/CategoryService";
 
 
 function List() {
-    const [notices, setNotices] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
-            const response = await getNotices();
-            setNotices(response.data.response);
+            const response = await getCategories();
+            setCategories(response.data.response);
             setLoading(false);
         })();
     }, []);
@@ -31,8 +31,8 @@ function List() {
         <Container>
             <Row>
                 <Col md={{ span: 10, offset: 1 }}>
-                    <Navbar title="Notícias"/>
-                    <ListTable noticeList={notices}/>
+                    <Navbar title="Categorias"/>
+                    <ListTable categoryList={categories}/>
                 </Col>
             </Row>
         </Container>

@@ -30,3 +30,14 @@ export const deleteCategory = async (categoryId) => {
 export const getCategory = async (categoryId) => {
     return axios.get(`${baseUrl}/api/category/${categoryId}`);
 };
+
+export const updateCategory = async (categoryId, name) => {
+    return axios.put(`${baseUrl}/api/category/${categoryId}`, {name})
+    .then(response =>{
+        toast.success('Categoria atualizada com sucesso!');
+        setTimeout(() => {location.reload(true)}, 1000);
+    })
+    .catch(error => {
+        toast.error('Não foi atualizar a categoria.');
+    });
+};
